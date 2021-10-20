@@ -1,0 +1,36 @@
+.burger__menu {
+  display: none;
+  z-index: 5;
+  transition: .4s;
+  cursor: pointer;
+  &.active {
+    margin-left: 18.5rem;
+  }
+  @include custom-point1432{
+    display: flex;
+    align-items: center;
+  }
+
+  &-open {
+    opacity: 1;
+    width: 2.8rem;
+    height: 1.2rem;
+    fill: color(primary);
+    transition: .4s;
+
+    &.active {
+      opacity: 0;
+    }
+  }
+  &-close {
+    opacity: 1;
+    width: 2.8rem;
+    height: 2.8rem;
+    fill: color(alert);
+    transition: .4s;
+
+    &.active {
+      opacity: 0;
+    }
+  }
+}

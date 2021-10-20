@@ -1,0 +1,220 @@
+.case {
+  position: relative;
+  padding-top: 13.4rem;
+  @include mini-desktop {
+    padding-top: 5rem;
+  }
+
+  &__gradient {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 14rem;
+    background: linear-gradient(180deg, #F8F8F8 0%, rgba(255, 255, 255, 0) 100%);
+    @include mini-desktop {
+      z-index: -1;
+    }
+  }
+  &__title {
+    margin-bottom: 0;
+
+    @include mini-desktop {
+      margin-bottom: 4rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__content {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    padding-bottom: 4.8rem;
+  }
+  &__slider {
+    display: flex;
+    position: relative;
+    opacity: 0;
+    top: 2rem;
+    // transition: .5s;
+    // min-width: 100%;
+    &.active {
+      // opacity: 1;
+      // animation: name duration timing-function delay iteration-count direction fill-mode;
+      animation: caseslide .5s .3s 1 forwards;
+    }
+    &-wrap {
+      display: flex;
+      position: absolute;
+      left: 0;
+      transition: .2s;
+    }
+    @include mini-desktop{
+      flex-direction: column;
+    }
+  }
+  &__text {
+    padding: 12rem 10rem 4.6rem 26rem;
+    background-color: color(grey5);
+    color: color(primary);
+    @include custom-point1601{
+      padding: 7rem 3rem 3rem ;
+    }
+    @include mini-desktop{
+      padding: 7rem 3rem 3rem ;
+    }
+
+    & > h3 {
+      font-weight: bold;
+      font-size: 2.4rem;
+      line-height: 3.4rem;
+      margin-bottom: 1.4rem;
+      @include mini-desktop{
+        font-size: 1.6rem;
+      }  
+    }
+    & > p {
+      font-size: 1.4rem;
+      line-height: 2.8rem; 
+      margin-bottom: 7.4rem;
+      @include mini-desktop{
+        margin-bottom: 0;
+      }
+    }
+
+  }
+  &__image {
+    position: relative;
+    @include mini-desktop{
+      min-height: 29rem;
+    }
+
+    & > img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+
+      @include mini-desktop{
+        max-height: 50rem;
+      }  
+      @include mini-tablet{
+        max-height: 29.2rem;
+      }  
+    }
+  }
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    &-item {
+      width: 50%;
+      margin-bottom: 4.4rem;
+
+      & > p:first-of-type {
+        margin-bottom: 1.8rem;
+        & > span {
+          font-size: 5rem;
+          line-height: 3.4rem;
+          color: color(mark);
+        }
+      }
+      & > p:last-of-type {
+        font-size: 1.2rem;
+        line-height: 2.1rem;
+        color: color(grey3);
+      }
+    }
+    @include mini-desktop{
+      padding-top: 5rem;
+    }
+    @include mini-tablet{
+      display: none;
+    }
+
+  }
+  &__link {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5rem 3rem;
+    background-color: color(primary);
+    @include mini-desktop{
+      left: 0;
+      padding: 3rem;
+    }
+  }
+  &__control {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @include mini-tablet{
+      // left: inherit;
+      top: inherit;
+      bottom: 31.2rem;
+      transform: translate(-50%, 0);
+    }
+
+    &-prew, &-next{
+      margin: .5rem;
+      width: 4.4rem;
+      height: 4.4rem;
+      border: 1px solid color(primary);
+      font-size: 3rem;
+      line-height: 4.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s;
+      &:hover {
+        color: color(mark);
+      }
+
+    }
+    &-prew{
+      color: color(primary);
+    }
+    &-next{
+      background-color: color(primary);
+    }
+  }
+  &__pagination {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    & > span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      width: 1.4rem;
+      height: 1.4rem;
+      border: 1px solid #484848;
+      margin: 0 .2rem;
+      &.active {
+        border-color: color(mark);
+        &::before {
+          content: '';
+          position: absolute;
+          width: 50%;
+          height: 50%;          
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: color(mark);
+        }
+      }
+    }
+  }
+}
+
+@keyframes caseslide {
+  0% {
+    opacity: 0;
+    top: 2rem;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}

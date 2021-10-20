@@ -1,0 +1,96 @@
+@import './_fonts.scss';
+@import './_vars.scss';
+@import './_reset.scss';
+// 
+.page {
+  position: relative;
+  max-width: 194rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+  @include point1921{
+    padding: 0;
+  }
+}
+.container {
+  width: 100%;
+  max-width: 1432px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include custom-point1432{
+      padding: 0 3.5rem;  
+    }
+  
+  }
+  &-article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &-specializations {
+    flex-direction: column;
+  }
+  &-case {
+    margin-bottom: 6.5rem;
+    @include mini-desktop{
+      flex-direction: column;
+    }
+  }
+  &-footer {
+    padding: 0 3.5rem;
+  }
+}
+.article__content-left,
+.article__content-right {
+  width: 50%;
+  @include mini-desktop{
+    min-width: 100%;
+  }
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 4.2rem;
+  color: color(grey0);
+  margin-bottom: 5.8rem;
+  @include mini-desktop{
+    font-size: 2rem;
+  }  
+  & > span {
+    color: color(mark);
+  }
+}
+
+@import './_header.scss';
+@import './_first-screen.scss';
+@import './_specializations.scss';
+@import './_advantage.scss';
+@import './_case.scss';
+@import './_contacts.scss';
+@import './_footer.scss';
+@import './_to-up.scss';
+@import './_btns.scss';
+@import './_burger.scss';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

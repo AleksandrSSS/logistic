@@ -1,0 +1,129 @@
+/*  */
+$Stolzl: 'Stolzl';
+/*  */
+$base4 : 4px;
+$base6 : 6px;
+$base10 : 10px;
+// ***********************************
+// ************ COLOR's **************
+// ***********************************
+$colors: (
+  gradient: linear-gradient(180deg, #F8F8F8 0%, rgba(255, 255, 255, 0) 100%),
+  mark: #1FAEE9,
+  mark-dark5: darken(#1FAEE9, 15%),
+  active: #FE6400,
+  alert: tomato,
+  black-tr50: #00000080,
+  primary: #FFFFFF,
+  grey0: #484848,
+  grey1: #757575,
+  grey2: #868686,
+  grey3: #9E9E9E,
+  grey4: #B4B4B4,
+  grey5: #242424,
+  grey6: #FAFAFA,
+  grey7: #4E4E4E,
+  grey8: #424242,
+  first-screen: #071C24,
+);
+/*  */
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+};
+// TODO: to Use in SASS
+// // //
+// selector {
+//   font-family: $Cabin;
+//   background-color: color(message);
+// }
+
+// ************************************************
+// ************ @ MEDIA BREACKPOINT's *************
+// ************************************************
+
+$mob-phone: 401px;
+$phone: 601px;
+$mini-tablet: 769px;
+$tablet: 841px;
+$large-tablet: 880px;
+$mini-desktop: 992px;
+$medium-desktop: 1201px;
+$large-desktop: 1321px;
+$extra-large-desktop: 1941px;
+$custom-point1601: 1601px;
+$point1921: 1921px;
+// 
+/*  */
+@mixin point1921 {
+  @media screen and (max-width: #{$point1921}) {
+    @content;
+  }
+};
+@mixin custom-point1601 {
+  @media screen and (max-width: #{$custom-point1601}) {
+    @content;
+  }
+};
+$custom-point1432: 1432px;
+@mixin custom-point1432 {
+  @media screen and (max-width: #{$custom-point1432}) {
+    @content;
+  }
+};
+// 
+@mixin extra-large-desktop {
+  @media screen and (max-width: #{$extra-large-desktop}) {
+    @content;
+  }
+};
+@mixin large-desktop {
+  @media screen and (max-width: #{$large-desktop}) {
+    @content;
+  }
+};
+@mixin medium-desktop {
+  @media screen and (max-width: #{$medium-desktop}) {
+    @content;
+  }
+};
+@mixin mini-desktop {
+  @media screen and (max-width: #{$mini-desktop}) {
+    @content;
+  }
+};
+@mixin large-tablet {
+  @media screen and (max-width: #{$large-tablet}) {
+    @content;
+  }
+};
+@mixin tablet {
+  @media screen and (max-width: #{$tablet}) {
+    @content;
+  }
+};
+@mixin mini-tablet {
+  @media screen and (max-width: #{$mini-tablet}) {
+    @content;
+  }
+};
+@mixin phone {
+  @media screen and (max-width: #{$phone}) {
+    @content;
+  }
+};
+@mixin mob-phone {
+  @media screen and (max-width: #{$mob-phone}) {
+    @content;
+  }
+};
+// TODO: to Use in SASS
+// 
+// body {
+//   font-size: 2rem;
+//   /*  */
+
+  @include mini-desktop{
+    font-size: 1rem;
+  }
+// }
+// ************************************************

@@ -1,0 +1,157 @@
+.header {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  height: 80px;
+  margin: 0 auto;
+  color: color(primary);
+  display: flex;
+  justify-content: space-between;
+  @include extra-large-desktop{
+    left: 0;
+    right: 0;
+  }
+  &__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  transition: .4s;
+  @include custom-point1432{
+    position: fixed;
+    left: -300%;
+  }
+  &.active {
+    overflow: auto;
+    display: block;
+    position: fixed;
+    left: 0;top: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.97);
+  }
+
+  &__page {
+    position: relative;
+    padding: 0 4rem;
+    background-color: color(active);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    &.active {
+      padding: 3rem 0;
+      left: 0; 
+      width: 20rem;
+      justify-content: center;
+    
+    }
+  
+    & > span {
+      margin-left: .2rem;
+    }
+    @include custom-point1432{
+      left: -1rem;
+    }
+  
+  }
+  &__navigate {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 0 8.2rem;
+    &.active {
+      flex-direction: column;
+      padding: 5rem;
+    }
+    @include large-desktop{
+      padding: 0 2rem;
+    }
+
+  }
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    &.active {
+      flex-direction: column;
+    }
+
+    &:first-of-type {
+      @include large-desktop{
+      }
+    }
+    &:last-of-type {
+      @include large-desktop{
+      }
+    }
+    // @include medium-desktop{
+    //   display: none;
+    // }
+  }
+  &__link {
+    font-size: 1.4rem;
+    line-height: 8rem;
+    margin-right: 3rem;
+    border: 1px solid transparent;
+    transition: .4s;
+    cursor: pointer;
+    &.active {
+      line-height: 5rem;
+      font-size: 2rem;
+      margin-right: 0;
+      align-self: center;
+    }
+
+    & > a {
+      text-decoration: none;
+      color: color(primary);
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      border-bottom-color: color(primary);
+    }
+  }
+  &__lang {
+    font-size: 1.4rem;
+    // line-height: 8rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    & > span {
+      margin-right: $base4;
+    }
+  }
+  &__service {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: color(primary);
+  }
+  &__arr-down {
+    width: $base10;
+    height: $base10;
+    fill: color(primary);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+.specializations {
+  position: relative;
+  padding: 12rem 0 2rem;
+
+  &__text {
+    padding-right: 5rem;
+    @include mini-desktop{
+      padding: 0;
+    }
+    
+    & > p {
+      position: relative;
+      font-size: 1.4rem;
+      line-height: 2.8rem;
+      &:first-of-type {
+        margin-bottom: 3rem;
+      }
+      &:last-of-type {
+        margin-bottom: 6rem;
+      }
+      &:first-of-type::before {
+        content: '';
+        width: 9rem;
+        position: absolute;
+        top: -3rem;
+        border: 1px solid color(grey1);
+      }
+    }
+  }
+  &__images {
+    position: absolute;
+    width: 50%;
+    left: 50%;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat (5, 1fr);
+    grid-template-rows: 44.5rem, 18rem;
+    &-slider {
+      position: relative;
+      left: 0;
+      overflow: hidden;
+      display: flex;
+      grid-column-start: 1;
+      grid-column-end: 6;
+      @include mini-desktop{
+        grid-column-start: 1;
+        grid-column-end: 4;  
+      }
+      &__wrap {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        left: 0;
+        transition: 1s;
+        & > img {
+          position: relative;
+          left: 0;
+          min-width: 100%;
+          transition: 1s;
+          object-fit: cover;
+        }
+      }
+      &-prew, &-next {
+        padding: 0 .6rem;
+        position: absolute;
+        background-color: color(primary);
+        color: color(grey1);
+        font-size: 5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .2s;
+        cursor: pointer;
+        &:hover {
+          color: color(mark);
+        }
+        @include custom-point1432{
+          font-size: 2.4rem;
+          padding: .2rem .4rem;
+        }
+        @include mini-desktop{
+          font-size: 1.4rem;
+          padding: .2rem .4rem;
+        }
+    
+      }
+      &-prew {
+        left: 0;
+      }
+      &-next {
+        right: 0;
+      }
+    }
+    & > img {
+      display: inline-block;
+      width: 100%;
+      &:not(:nth-child(-n+4)) {
+
+        @include mini-desktop{
+          display: none;
+        }
+      }
+
+    }
+    @include mini-desktop{
+      padding-top: 3rem;
+      position: relative;
+      width: 100%;
+      left: 0;
+      
+      grid-template-columns: repeat (3, 1fr);
+
+    }
+  
+  }
+}
+
+//945 X 445

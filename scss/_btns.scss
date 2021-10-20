@@ -1,0 +1,51 @@
+button {
+  cursor: pointer;
+}
+.btn-large {
+  font-family: $Stolzl;
+  position: relative;
+  padding: 1.4rem 4.5rem;
+  background-color: transparent;
+  border: none;
+  color: color(mark);
+  white-space: nowrap;
+  // font-size: 1.2rem;
+  transition: .5s;
+  @include mini-desktop {
+    max-width: 32rem;
+    padding: 1.4rem 0 1.4rem 2rem;
+    text-align-last: left;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    border: 1px solid color(mark);
+    transition: .5s;
+    transition-delay: .2s;
+  }
+  &:hover {
+    color: color(mark-dark5);
+    &::before {
+      border-color: color(mark-dark5);
+    }
+  }
+}
+.case__btn {
+  color: color(grey1);
+  &::before {
+    width: 35%;
+    border: 1px solid color(grey1);
+  }
+}
+.footer__btn {
+  color: color(primary);
+
+  &::before {
+    border: 1px solid color(primary);
+  }
+}

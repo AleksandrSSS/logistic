@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="./dist/main.css">
+  
+  <title>logistic@ktf.com.ua</title>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!--  <svg class=" ">
+            <use xlink:href="#burger"></use>
+          </svg> -->
+    <symbol id="burger" viewBox="0 0 27 12">
+      <g>
+        <rect width="22" height="2" rx="1" transform="matrix(-1 0 0 1 22 0)"/>
+        <rect width="17" height="2" rx="1" transform="matrix(-1 0 0 1 17 4.99976)"/>
+        <rect width="27" height="2" rx="1" transform="matrix(-1 0 0 1 27 10)"/>       
+      </g>
+    </symbol>
+    <symbol id="burger-close" viewBox="0 0 352 512">
+      <g>
+        <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>      
+      </g>
+    </symbol>
+    <symbol id="service" viewBox="0 0 14 14">
+      <g>
+        <path d="M9.40322 13.0133H9.40329C9.40329 13.0607 9.36471 13.0993 9.31727 13.0993H1.10381C1.05637 13.0993 1.0178 13.0607 1.0178 13.0133V0.986747C1.0178 0.939308 1.05637 0.900733 1.10381 0.900733H9.31727C9.36471 0.900733 9.40329 0.939308 9.40329 0.986747V1.82461L10.3032 0.95615C10.287 0.426188 9.85108 0 9.31727 0H1.10381C0.559729 0 0.117065 0.442633 0.117065 0.986747V13.0133C0.117065 13.5573 0.559699 14 1.10378 14H9.31724C9.86132 14 10.304 13.5574 10.304 13.0133V8.77973L9.40322 9.68044V13.0133Z"/>
+        <path d="M1.69073 10.561C1.69073 10.8097 1.89238 11.0113 2.1411 11.0113H3.7161C3.5486 10.7448 3.47903 10.4274 3.52292 10.1106H2.1411V10.1106C1.89238 10.1106 1.69073 10.3122 1.69073 10.561Z"/>
+        <path d="M4.00813 7.85034H2.1411C1.89238 7.85034 1.69073 8.05199 1.69073 8.30071C1.69073 8.54943 1.89238 8.75107 2.1411 8.75107H3.813L4.00813 7.85034Z"/>
+        <path d="M5.63763 5.59009H2.1411C1.89238 5.59009 1.69073 5.79173 1.69073 6.04045C1.69073 6.28917 1.89238 6.49082 2.1411 6.49082H4.7369L5.63763 5.59009Z"/>
+        <path d="M7.8979 3.32983H2.1411C1.89238 3.32983 1.69073 3.53148 1.69073 3.7802C1.69073 4.02892 1.89238 4.23057 2.1411 4.23057H6.99717L7.8979 3.32983Z"/>
+        <path d="M13.3515 1.84324C12.6141 1.08409 11.4137 1.0877 10.6782 1.82316C10.2631 2.23825 5.3312 7.17018 5.10039 7.40102C5.04088 7.4605 4.99723 7.53857 4.97867 7.62413L4.42087 10.1992C4.38893 10.3466 4.43276 10.5031 4.54258 10.613C4.65167 10.7221 4.80796 10.7668 4.95639 10.7347L7.53143 10.1769C7.61616 10.1585 7.69607 10.1137 7.75454 10.0552L13.3324 4.47731C14.0636 3.74619 14.0623 2.57476 13.3515 1.84324ZM5.44925 9.70628L5.68418 8.62173L6.53381 9.47135L5.44925 9.70628ZM12.6955 3.84039L7.43607 9.09978L6.05575 7.71943L11.3151 2.46004C11.7086 2.06656 12.3522 2.07964 12.729 2.49532C13.0748 2.87633 13.0671 3.46874 12.6955 3.84039Z"/>
+       </g>
+    </symbol>
+    <symbol id="arr-down" viewBox="0 0 6 4">
+      <g>
+        <path d="M2.70303 3.58697L0.123206 1.00706C-0.0409866 0.842945 -0.0409866 0.576864 0.123206 0.41283C0.287253 0.248783 0.553321 0.248783 0.717354 0.41283L3.0001 2.69565L5.28278 0.412897C5.44689 0.24885 5.71293 0.24885 5.87698 0.412897C6.04109 0.576944 6.04109 0.843012 5.87698 1.00713L3.29711 3.58703C3.21505 3.66906 3.10761 3.71002 3.00012 3.71002C2.89257 3.71002 2.78505 3.66898 2.70303 3.58697Z"/>
+      </g>
+    </symbol>
+
+    <symbol id="telegram" viewBox="0 0 15 13">
+      <g>
+        <path d="M5.88561 8.48813L5.63749 11.9781C5.99249 11.9781 6.14624 11.8256 6.33061 11.6425L7.99499 10.0519L11.4437 12.5775C12.0762 12.93 12.5219 12.7444 12.6925 11.9956L14.9562 1.38813L14.9569 1.38751C15.1575 0.452509 14.6187 0.0868843 14.0025 0.316259L0.696239 5.41063C-0.211886 5.76313 -0.198136 6.26938 0.541864 6.49876L3.94374 7.55688L11.8456 2.61251C12.2175 2.36626 12.5556 2.50251 12.2775 2.74876L5.88561 8.48813Z"/>
+      </g>
+    </symbol>
+    <symbol id="facebook" viewBox="0 0 8 13">
+      <g>
+        <path d="M7.4994 0.00270487L5.68393 0C3.64432 0 2.32623 1.25573 2.32623 3.19932V4.67442H0.500858C0.343124 4.67442 0.215393 4.79316 0.215393 4.93963V7.07688C0.215393 7.22335 0.34327 7.34196 0.500858 7.34196H2.32623V12.7349C2.32623 12.8814 2.45396 13 2.61169 13H4.99328C5.15102 13 5.27875 12.8813 5.27875 12.7349V7.34196H7.41303C7.57077 7.34196 7.6985 7.22335 7.6985 7.07688L7.69937 4.93963C7.69937 4.8693 7.66922 4.80195 7.61577 4.75218C7.56232 4.70241 7.4895 4.67442 7.41376 4.67442H5.27875V3.42396C5.27875 2.82294 5.43299 2.51783 6.27613 2.51783L7.49911 2.51742C7.6567 2.51742 7.78443 2.39868 7.78443 2.25234V0.267782C7.78443 0.121584 7.65684 0.00297535 7.4994 0.00270487Z"/>
+      </g>
+    </symbol>
+    <symbol id="linkedin" viewBox="0 0 14 13">
+      <g>
+        <g>
+          <path d="M13.9965 13V12.9995H14V8.23172C14 5.89931 13.4592 4.1026 10.5227 4.1026C9.11107 4.1026 8.16374 4.82193 7.77699 5.50389H7.73615V4.32035H4.9519V12.9995H7.85107V8.70189C7.85107 7.57035 8.08207 6.47618 9.59115 6.47618C11.0781 6.47618 11.1002 7.76752 11.1002 8.77447V13H13.9965Z"/>
+          <path d="M0.231018 4.3208H3.13369V12.9999H0.231018V4.3208Z"/>
+          <path d="M1.68117 0C0.753083 0 0 0.699292 0 1.56108C0 2.42288 0.753083 3.13679 1.68117 3.13679C2.60925 3.13679 3.36233 2.42288 3.36233 1.56108C3.36175 0.699292 2.60867 0 1.68117 0V0Z"/>
+        </g>
+        <defs>
+        <clipPath>
+        <rect width="14" height="13"/>
+        </clipPath>
+        </defs>
+      </g>
+    </symbol>
+    <symbol id="instagram" viewBox="0 0 13 13">
+      <g>
+        <g>
+          <path d="M12.9873 3.82204C12.9568 3.1313 12.8451 2.65642 12.6851 2.24493C12.52 1.80815 12.2661 1.41709 11.9334 1.09201C11.6083 0.761868 11.2146 0.505333 10.7829 0.34284C10.369 0.182828 9.89665 0.0711275 9.20591 0.0406726C8.51001 0.00763851 8.28909 0 6.5241 0C4.7591 0 4.53818 0.00763851 3.84486 0.0380934C3.15412 0.0685483 2.67924 0.180348 2.26786 0.340261C1.83097 0.505333 1.43992 0.759288 1.11484 1.09201C0.784695 1.41709 0.528259 1.81073 0.365668 2.24245C0.205656 2.65642 0.0939546 3.12872 0.0634997 3.81946C0.0304657 4.51536 0.0228271 4.73628 0.0228271 6.50127C0.0228271 8.26626 0.0304657 8.48719 0.0609205 9.18051C0.0913754 9.87125 0.203175 10.3461 0.363187 10.7576C0.528259 11.1944 0.784695 11.5854 1.11484 11.9105C1.43992 12.2407 1.83355 12.4972 2.26528 12.6597C2.67924 12.8197 3.15154 12.9314 3.84238 12.9619C4.5356 12.9924 4.75662 13 6.52162 13C8.28661 13 8.50753 12.9924 9.20085 12.9619C9.89159 12.9314 10.3665 12.8197 10.7779 12.6597C11.6515 12.3219 12.3423 11.6312 12.68 10.7576C12.84 10.3436 12.9518 9.87125 12.9822 9.18051C13.0127 8.48719 13.0203 8.26626 13.0203 6.50127C13.0203 4.73628 13.0177 4.51536 12.9873 3.82204ZM11.8166 9.12971C11.7886 9.7646 11.682 10.1074 11.5931 10.336C11.3747 10.9023 10.9252 11.3518 10.3588 11.5703C10.1303 11.6592 9.78495 11.7658 9.15254 11.7937C8.46686 11.8242 8.26121 11.8318 6.52668 11.8318C4.79214 11.8318 4.58391 11.8242 3.90071 11.7937C3.26582 11.7658 2.92298 11.6592 2.69442 11.5703C2.41259 11.4661 2.15606 11.301 1.94783 11.0852C1.73197 10.8744 1.5669 10.6204 1.46274 10.3386C1.37385 10.11 1.26721 9.7646 1.23934 9.13229C1.20878 8.44661 1.20124 8.24087 1.20124 6.50633C1.20124 4.77179 1.20878 4.56357 1.23934 3.88047C1.26721 3.24558 1.37385 2.90274 1.46274 2.67418C1.5669 2.39224 1.73197 2.13581 1.95041 1.92749C2.16112 1.71162 2.41507 1.54655 2.697 1.44249C2.92556 1.3536 3.27098 1.24696 3.90329 1.21899C4.58897 1.18853 4.79472 1.18089 6.52916 1.18089C8.26627 1.18089 8.47192 1.18853 9.15512 1.21899C9.79001 1.24696 10.1328 1.3536 10.3614 1.44249C10.6432 1.54655 10.8998 1.71162 11.108 1.92749C11.3239 2.13829 11.4889 2.39224 11.5931 2.67418C11.682 2.90274 11.7886 3.24806 11.8166 3.88047C11.8471 4.56615 11.8547 4.77179 11.8547 6.50633C11.8547 8.24087 11.8471 8.44403 11.8166 9.12971Z"/>
+          <path d="M6.52409 3.1618C4.68043 3.1618 3.18457 4.65756 3.18457 6.50132C3.18457 8.34508 4.68043 9.84084 6.52409 9.84084C8.36785 9.84084 9.86361 8.34508 9.86361 6.50132C9.86361 4.65756 8.36785 3.1618 6.52409 3.1618ZM6.52409 8.66759C5.32802 8.66759 4.35783 7.6975 4.35783 6.50132C4.35783 5.30515 5.32802 4.33506 6.52409 4.33506C7.72026 4.33506 8.69035 5.30515 8.69035 6.50132C8.69035 7.6975 7.72026 8.66759 6.52409 8.66759Z"/>
+          <path d="M10.7754 3.02975C10.7754 3.46028 10.4263 3.80937 9.99563 3.80937C9.56509 3.80937 9.216 3.46028 9.216 3.02975C9.216 2.59911 9.56509 2.25012 9.99563 2.25012C10.4263 2.25012 10.7754 2.59911 10.7754 3.02975Z"/>
+        </g>
+        <defs>
+        <clipPath>
+        <rect width="13" height="13"/>
+        </clipPath>
+        </defs>
+      </g>
+    </symbol>
+  </svg>
+
+  <div class="page">
+    <!--  -->
+    <header class="header">
+      <div class="container container-header">
+        <a class="header__logo" href="#">
+          <img src="./images/logo.png" alt="logo">
+        </a>
+        <div class="burger__menu">
+          <svg class="burger__menu-open">
+            <use xlink:href="#burger"></use>
+          </svg>
+
+          <svg class="burger__menu-close active">
+            <use xlink:href="#burger-close"></use>
+          </svg>
+        </div>
+        <nav class="nav">
+          <div class="nav__page">
+            <svg class="nav__service">
+              <use xlink:href="#service"></use>
+            </svg>
+            <span>услуги</span>
+          </div>
+          <div class="nav__navigate">
+            <ul class="nav__list">
+              <li class="nav__link"><a href="#">О компании</a></li>
+              <li class="nav__link"><a href="#">Рекомендации</a></li>
+              <li class="nav__link"><a href="#">Кейсы</a></li>
+            </ul>
+            <ul class="nav__list">
+              <a href="#"></a>
+              <li class="nav__link"><a href="#">Документация</a></li>
+              <li class="nav__link"><a href="#">Для диллеров</a></li>
+              <li class="nav__link"><a href="#">FAQ</a></li>
+              <li class="nav__link"><a href="#">Блог</a></li>
+              <li class="nav__link"><a href="#">Контакты</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="nav__lang">
+          <span>ru</span>
+          <svg class="nav__arr-down">
+            <use xlink:href="#arr-down"></use>
+          </svg>
+        </div>
+      </div>
+    </header>
+    <!--  -->
+    <article class="first__screen">
+      <div class="container container-article">
+        <div class="article__content-left first__screen-description">
+          <p class="first__screen-text">
+            <span>Главная</span>
+            -
+            <span>Диллерам</span>   
+          </p>
+          <h1 class="first__screen-title">
+            Диллерам
+          </h1>
+          <p class="first__screen-subtitle">
+            КТФ – 4PL провайдер логистических услуг. Мы специализируемся <br> на организации доставки сельскохозяйственной техники из США
+          </p>
+        </div>
+
+        <div class="article__content-right first__screen-contacts">
+          <a href="tel:+380509351388">+38 050 935 13 88</a>
+          <a href="mailto:sssalex06@gmail.com">sssalex06@gmail.com</a>
+        </div>
+      </div>
+    </article>
+    <!--  -->
+    <article class="specializations">
+      <div class="container container-article container-specializations">
+        <div class="article__content-left specializations__text">
+          <h2>Больше единиц техники - <br> <span>лучшие условия.</span> </h2> 
+          <p>Идейные соображения высшего порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа дальнейших направлений развития. Таким образом консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании дальнейших направлений развития. Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании форм развития.</p>
+          <p>Задача организации, в особенности же новая модель организационной деятельности влечет за собой процесс внедрения и модернизации модели развития. Не следует, однако забывать, что постоянное информационно-пропагандистское обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками.</p>
+          <button class="btn-large specializations__btn ">
+            начать сотрудничество &#8594;
+          </button>
+        </div>
+
+        <div class="article__content-right specializations__images">
+          <div class="specializations__images-slider">
+            <div class="specializations__images-slider__wrap">
+              <img src="./images/specializations/IMAGE-11.jpg" alt="specializations">
+              <img src="./images/specializations/IMAGE-12.jpg" alt="specializations">
+              <img src="./images/specializations/IMAGE-13.jpg" alt="specializations">
+              <img src="./images/specializations/IMAGE-11.jpg" alt="specializations">
+              <img src="./images/specializations/IMAGE-12.jpg" alt="specializations">
+            </div>
+          
+            <div class="specializations__images-slider-prew">&#8592;</div>
+            <div class="specializations__images-slider-next">&#8594;</div>
+          </div>
+          <img src="./images/specializations/IMAGE-2.jpg" alt="specializations">
+          <img src="./images/specializations/IMAGE-3.jpg" alt="specializations">
+          <img src="./images/specializations/IMAGE-4.jpg" alt="specializations">
+          <img src="./images/specializations/IMAGE-VIDEO.jpg" alt="specializations">
+          <img src="./images/specializations/IMAGE-5.jpg" alt="specializations">
+        </div>
+      </div>
+    </article>
+    <!--  -->
+    <article class="advantage">
+      <div class="container container-article">
+        <h2 class="advantage__title">Какие вы получите <span>выгоды:</span> </h2>
+        
+        <div class="article__content-left advantage__images">
+          <img src="./images/advantage/IMAGE-1.jpg" alt="">
+        </div>
+
+        <div class="article__content-right advantage__text">
+          <ul class="advantage__list">
+            <li class="advantage__item">
+              <h3>Оптовый заказ - оптовая цена</h3>
+              <p>Равным образом дальнейшее развитие различных форм деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач. Равным образом постоянный количественный рост и сфера нашей активности играет важную роль в формировании системы обучения кадров, соответствует всему.</p>
+            </li>
+            <li class="advantage__item">
+              <h3>Особые условия для тех, кто заказывает много</h3>
+              <p>Задача организации, в особенности же новая модель организационной деятельности влечет за собой процесс внедрения и модернизации модели развития. Не следует, однако забывать, что постоянное информационно-пропагандистское обеспечение нашей деятельности.</p>
+            </li>
+            <li class="advantage__item">
+              <h3>Для постоянных клиентов - большие скидки</h3>
+              <p>Повседневная практика показывает, что реализация намеченных плановых заданий влечет за собой процесс внедрения и модернизации системы обучения кадров, соответствует насущным потребностям. Не следует, однако забывать, что дальнейшее развитие различных форм деятельности.</p>
+            </li>
+          </ul>
+          <button class=" btn-large specializations__btn">
+            начать сотрудничество &#8594;
+          </button>
+        </div>
+      </div>
+    </article>
+    <!--  -->
+    <article class="case">
+      <div class="case__gradient"></div>
+      <div class="container container-article container-case">
+        <h2 class="case__title">Гордимся своими <span>кейсами</span> </h2>
+        <button class="btn-large case__btn ">
+          посмотреть Все кейсы &#8594;
+        </button>
+      </div>
+
+      <div class="case__content">
+
+        <div class="case__slider-wrap">
+          <div class="case__slider">
+            <div class="article__content-left case__text">
+              <h3>Доставка сель-хоз техники для нашего <br> клиента из США в Украину</h3>
+              <p>Организация доставки из Южной Каролины в порт Одессы</p>
+              <div class="case__footer">
+                <div class="case__footer-item">
+                  <p> <span>9</span> дней </p>
+                  <p>Заняла доставка из Южной <br> Каролины в порт Одессы</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>12</span> тыс.долларов </p>
+                  <p>Общая сумма сделки за весь  <br>  период сотрудничества</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>18</span> сотрудников </p>
+                  <p>Которые, не покладая рук  <br>  занимались организацией</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>8</span> единиц техники </p>
+                  <p>Погрузили на судно и доставили  <br>  прямиком к своему владельцу</p>
+                </div>
+              </div>
+            </div>
+            <div class="article__content-right case__image">
+              <img src="./images/case/IMAGE-1.jpg" alt="case">
+              <a href="#" class="case__link">
+                <button class="btn-large">
+                  посмотреть кейс &#8594;
+                </button>      
+              </a>
+            </div>
+          </div>
+          <div class="case__slider">
+            <div class="article__content-left case__text">
+              <h3>Доставка сель-хоз техники для нашего <br> клиента из США в Украину</h3>
+              <p>Организация доставки из Южной Каролины в порт Одессы</p>
+              <div class="case__footer">
+                <div class="case__footer-item">
+                  <p> <span>9</span> дней </p>
+                  <p>Заняла доставка из Южной <br> Каролины в порт Одессы</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>12</span> тыс.долларов </p>
+                  <p>Общая сумма сделки за весь  <br>  период сотрудничества</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>18</span> сотрудников </p>
+                  <p>Которые, не покладая рук  <br>  занимались организацией</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>8</span> единиц техники </p>
+                  <p>Погрузили на судно и доставили  <br>  прямиком к своему владельцу</p>
+                </div>
+              </div>
+            </div>
+            <div class="article__content-right case__image">
+              <img src="./images/case/IMAGE-1.jpg" alt="case">
+              <a href="#" class="case__link">
+                <button class="btn-large">
+                  посмотреть кейс &#8594;
+                </button>      
+              </a>
+            </div>
+          </div>
+          <div class="case__slider">
+            <div class="article__content-left case__text">
+              <h3>Доставка сель-хоз техники для нашего <br> клиента из США в Украину</h3>
+              <p>Организация доставки из Южной Каролины в порт Одессы</p>
+              <div class="case__footer">
+                <div class="case__footer-item">
+                  <p> <span>9</span> дней </p>
+                  <p>Заняла доставка из Южной <br> Каролины в порт Одессы</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>12</span> тыс.долларов </p>
+                  <p>Общая сумма сделки за весь  <br>  период сотрудничества</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>18</span> сотрудников </p>
+                  <p>Которые, не покладая рук  <br>  занимались организацией</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>8</span> единиц техники </p>
+                  <p>Погрузили на судно и доставили  <br>  прямиком к своему владельцу</p>
+                </div>
+              </div>
+            </div>
+            <div class="article__content-right case__image">
+              <img src="./images/case/IMAGE-1.jpg" alt="case">
+              <a href="#" class="case__link">
+                <button class="btn-large">
+                  посмотреть кейс &#8594;
+                </button>      
+              </a>
+            </div>
+          </div>
+          <div class="case__slider">
+            <div class="article__content-left case__text">
+              <h3>Доставка сель-хоз техники для нашего <br> клиента из США в Украину</h3>
+              <p>Организация доставки из Южной Каролины в порт Одессы</p>
+              <div class="case__footer">
+                <div class="case__footer-item">
+                  <p> <span>9</span> дней </p>
+                  <p>Заняла доставка из Южной <br> Каролины в порт Одессы</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>12</span> тыс.долларов </p>
+                  <p>Общая сумма сделки за весь  <br>  период сотрудничества</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>18</span> сотрудников </p>
+                  <p>Которые, не покладая рук  <br>  занимались организацией</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>8</span> единиц техники </p>
+                  <p>Погрузили на судно и доставили  <br>  прямиком к своему владельцу</p>
+                </div>
+              </div>
+            </div>
+            <div class="article__content-right case__image">
+              <img src="./images/case/IMAGE-1.jpg" alt="case">
+              <a href="#" class="case__link">
+                <button class="btn-large">
+                  посмотреть кейс &#8594;
+                </button>      
+              </a>
+            </div>
+          </div>
+          <div class="case__slider">
+            <div class="article__content-left case__text">
+              <h3>Доставка сель-хоз техники для нашего <br> клиента из США в Украину</h3>
+              <p>Организация доставки из Южной Каролины в порт Одессы</p>
+              <div class="case__footer">
+                <div class="case__footer-item">
+                  <p> <span>9</span> дней </p>
+                  <p>Заняла доставка из Южной <br> Каролины в порт Одессы</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>12</span> тыс.долларов </p>
+                  <p>Общая сумма сделки за весь  <br>  период сотрудничества</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>18</span> сотрудников </p>
+                  <p>Которые, не покладая рук  <br>  занимались организацией</p>
+                </div>
+                <div class="case__footer-item">
+                  <p> <span>8</span> единиц техники </p>
+                  <p>Погрузили на судно и доставили  <br>  прямиком к своему владельцу</p>
+                </div>
+              </div>
+            </div>
+            <div class="article__content-right case__image">
+              <img src="./images/case/IMAGE-1.jpg" alt="case">
+              <a href="#" class="case__link">
+                <button class="btn-large">
+                  посмотреть кейс &#8594;
+                </button>      
+              </a>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="case__control">
+          <div class="case__control-prew">&#8592;</div>
+          <div class="case__control-next">&#8594;</div>
+        </div>
+        <div class="case__pagination"> </div>
+      </div>
+    </article>
+    <!--  -->
+    
+    <article class="contacts">
+      <form class="contacts__form">
+
+        <div class="contacts__content">
+
+          <h2 class="contacts__title">Все еще не работаете  <span>с нами?</span> </h2>
+          <p>Звоните или оставляйте заявку, обсудим почему <span>&#128522;</span> </p>
+          <a href="tel:+380509351388">+38 050 935 13 88</a>
+
+          <div class="contacts__form-social">
+            <a class="footer__contacts-link" href="http://telegram.me/Track888">
+              <svg class="contacts__form-social-icon telegram">
+                <use xlink:href="#telegram"></use>
+              </svg>
+            </a>
+
+            <a class="footer__contacts-link" href="https://www.facebook.com/">
+              <svg class="contacts__form-social-icon facebook">
+                <use xlink:href="#facebook"></use>
+              </svg>
+            </a>
+
+            <a class="footer__contacts-link" href="https://www.linkedin.com/mwlite/in/alex-sss-99b69b192">
+              <svg class="contacts__form-social-icon linkedin">
+                <use xlink:href="#linkedin"></use>
+              </svg>
+            </a>
+
+            <a class="footer__contacts-link" href="https://instagram.com/">
+              <svg class="contacts__form-social-icon instagram">
+                <use xlink:href="#instagram"></use>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="contacts__link">
+          <button class=" btn-large">
+            Отправить заявку &#8594;
+          </button>
+        </div>
+
+      </form>
+    </article>
+    
+    <!--  -->
+    <footer class="footer">
+      <div class="container container-footer">
+        <div class="footer__header">
+          <div class="footer__logo">
+            <img class="footer__logo-img" src="./images/logo.png" alt="logo">
+            <p class="footer__logo-text">Компания работает на рынке <br> Украины с 2015 года.</p>
+          
+            <div class="to-up"></div>
+            
+            <p class="to-up__text">наверх</p>
+          </div>
+          <div class="footer__service">
+            <h3 class="footer__service-title">Услуги</h3>
+            <div class="footer__service-items">
+              <div class="footer__service-item">
+                <ul class="footer__service-list">
+                  
+                  <li><a href="#">Сельхозтехника из США</a></li>
+                  <li><a href="#">Грузоперевозки из США</a></li>
+                  <li><a href="#">Перевозки по США</a></li>
+                  <li><a href="#">Внутрипортовое экспедирование</a></li>
+                  <li><a href="#">Грузоперевозки из Европы</a></li>
+                  <li><a href="#">Грузоперевозки по Украине</a></li>
+                  <li><a href="#">Доставка авто из США</a></li>
+                  <li><a href="#">РоРо сервис</a></li>
+                </ul>
+              </div>
+              <div class="footer__service-item">
+                <ul class="footer__service-list">
+                  <li><a href="#">Автомобильные перевозки</a></li>
+                  <li><a href="#">Контейнерные перевозки</a></li>
+                  <li><a href="#">4PL логистика</a></li>
+                  <li><a href="#">Консультации ВЭД</a></li>
+                  <li><a href="#">Морской фрахт</a></li>
+                  <li><a href="#">Таможенный брокер</a></li>
+                  <li><a href="#">Складские услуги</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer__contacts">
+            <h3 class="footer__contacts-title">Связаться с нами</h3>
+            <a class="footer__contacts-phone" href="tel:+380509351388">+38 050 935 13 88</a>
+            <a class="footer__contacts-mail" href="mailto:sssalex06@gmail.com">sssalex06@gmail.com</a>
+            <div class="footer__contacts-social">
+              <a class="footer__contacts-link" href="http://telegram.me/Track888">
+                <svg class="footer__contacts-icon telegram">
+                  <use xlink:href="#telegram"></use>
+                </svg>
+              </a>
+
+              <a class="footer__contacts-link" href="https://www.facebook.com/">
+                <svg class="footer__contacts-icon facebook">
+                  <use xlink:href="#facebook"></use>
+                </svg>
+              </a>
+
+              <a class="footer__contacts-link" href="https://www.linkedin.com/mwlite/in/alex-sss-99b69b192">
+                <svg class="footer__contacts-icon linkedin">
+                  <use xlink:href="#linkedin"></use>
+                </svg>
+              </a>
+
+              <a class="footer__contacts-link" href="https://instagram.com/">
+                <svg class="footer__contacts-icon instagram">
+                  <use xlink:href="#instagram"></use>
+                </svg>
+              </a>
+            </div>  
+            <button class=" btn-large footer__btn">
+              начать сотрудничество &#8594;
+            </button>  
+          </div>
+        </div>
+        <div class="footer__footer">
+          <div class="footer__footer-creator">
+            <span>Разработка сайта</span>
+            <img src="./images/creator.jpg" alt="creator">
+          </div>
+          <span>2021 &#169; Все права защищены</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/burger.js"></script>
+  <script src="./js/slider.js"></script>
+  <script src="./js/slider-case.js"></script>
+  <script src="./js/to-top.js"></script>
+</body>
+</html>

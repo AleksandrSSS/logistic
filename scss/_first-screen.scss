@@ -1,0 +1,56 @@
+.first__screen {
+  background-image: url("../images/partnership.png");
+  background-color: color(black-tr50); 
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: color(first-screen);
+  height: 370px;
+  color: color(primary);
+  &-description, &-contacts {
+    padding-top: 9.6rem;
+  }
+  &-text {
+    margin-bottom: 6rem;
+    font-size: 1.2rem;
+    line-height: 2.8rem;
+    color: color(primary);
+    & > span:last-child {
+      color: #B4B4B4;
+    }
+  }
+  &-title {
+    margin-bottom: 1.6rem;
+    font-weight: bold;
+    font-size: 3.2rem;
+  }
+  &-subtitle {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    font-weight: normal;
+  }
+  &-contacts {
+    text-align: right;
+    & > a {
+      text-decoration: underline;
+      font-size: 1.4rem;
+      line-height: 2.8rem;
+      color: color(primary);
+      &:first-child {
+        color: color(primary);
+        margin-right: 6rem;
+      }
+      &:last-child {
+        font-weight: 300;
+      }
+    }
+    @include mini-desktop{
+      display: none;
+    }
+  
+  }
+
+
+
+
+}

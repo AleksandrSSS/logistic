@@ -1,0 +1,197 @@
+.footer {
+  padding-top: 8rem;
+  background-color: color(grey5);
+  color: color(primary);
+  font-weight: 300;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid color(grey7);
+    @include mini-desktop{
+      flex-direction: column;
+      border-bottom: none;
+    }  
+  }
+  &__logo {
+    @include mini-desktop{
+      order: 2;
+    }  
+
+    &-img {
+      margin-bottom: 2.4rem;
+    }
+    &-text {
+      white-space: nowrap;
+      font-size: 1.2rem;
+      line-height: 2.2rem;
+    }
+  }
+  &__service {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 3rem;
+    @include custom-point1601{
+      padding: 0 1rem;
+    }  
+    @include mini-desktop{
+      order: 0;
+      flex-direction: column;
+      border-bottom: 1px solid color(grey7);
+      padding-bottom: 1rem;
+      margin-bottom: 3rem;
+    }  
+  }
+  &__service-items {
+    display: flex;
+    @include mini-desktop{
+      flex-direction: column;
+    }  
+  }
+  &__service-item {
+    &:not(:last-of-type) {
+      margin-right: 15rem;
+      @include custom-point1601{
+        margin-right: 2rem;
+      }  
+      @include mini-desktop{
+        margin-right: 0;
+      }  
+    }
+
+  }
+  &__service-list {
+    margin: 0;
+    padding: 0 0 0 2rem;
+    list-style: none;
+    & > li {
+      cursor: pointer;
+      position: relative;
+      left: 0;
+      font-size: 1.2rem;
+      line-height: 4.4rem;
+      transition: .3s;
+      & > a {
+        white-space: nowrap;
+        text-decoration: none;
+        color: color(primary);
+        transition: .3s;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        left: -2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1px;
+        width: .8rem;
+        background-color: color(primary);
+        transition: .3s;
+      }
+      &:hover {
+        left: 1rem;
+        & > a {
+
+          color: color(mark);
+        }
+        &::before {
+          left: -3rem;
+          width: 1.8rem;
+          background-color: color(mark);
+        }
+      }
+    }
+  }
+  &__service-title {
+    width: 100%;
+    margin-bottom: 1.8rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+  }
+  &__contacts {
+    @include mini-desktop{
+      order: 1;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid color(grey7);
+      margin-bottom: 3rem;
+    }  
+
+    &-title {
+      margin-bottom: 1.8rem;
+      font-weight: bold;
+      font-size: 1.4rem;
+      line-height: 2.8rem;  
+    }
+    &-phone, &-mail {
+      display: block;
+      font-size: 1.2rem;
+      line-height: 4.4rem;
+      color: color(primary);
+    }
+    &-social {
+      padding: 2rem 0 2.8rem;
+    }
+    &-link {
+      display: inline-flex;
+      &:not(:last-of-type) {
+        margin-right: 2.5rem;
+      }
+      &:hover {
+        .contacts__form-social-icon {
+          fill: color(mark);
+        }
+      }
+    }
+    &-icon {
+      display: inline-block;
+      cursor: pointer;
+      width: 1.4rem;
+      height: 1.4rem;
+      fill: color(primary);
+      transition: .4s;
+      
+      &:hover {
+        fill: color(mark);
+      }
+    }
+  }
+  &__footer {
+    position: relative;
+    padding: 1.4rem 0;
+    text-align: center;
+    @include mini-desktop{
+      background-color: color(grey8);
+      margin: 0 -3.5rem;
+    }
+
+    & > span {
+      @include mini-desktop{
+        position: absolute;
+        top: -27rem;
+        left: 3.5rem;
+      }
+    }
+    &-creator {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      & > span {
+        margin-right: 1rem;
+      }
+      @include mini-desktop{
+        position: relative;
+        top: 0;
+        transform: translateY(0);
+        padding-left: 3rem;
+      }
+    }
+  }
+}
+
+
+
